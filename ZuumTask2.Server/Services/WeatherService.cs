@@ -16,7 +16,6 @@ namespace ZuumTask2.Server.Services
 
         public async Task<WeatherData> GetWeatherDataAsync(string city, string country)
         {
-            // Assuming we use OpenWeatherMap API
             var apiKey = _configuration["WeatherApiKey"];
             var url = $"http://api.openweathermap.org/data/2.5/weather?q={city},{country}&appid={apiKey}&units=metric";
 

@@ -6,7 +6,7 @@ namespace ZuumTask2.Server.Services
     {
         private readonly IServiceProvider _services;
         private readonly ILogger<WeatherUpdateService> _logger;
-        private readonly string[] _cities = { "Riga,LV", "Kyiv,UA" };
+        private readonly string[] _cities = { "Riga,LV", "Daugavpils, LV", "Kyiv,UA", "Kharkiv, UA" };
 
         public WeatherUpdateService(IServiceProvider services, ILogger<WeatherUpdateService> logger)
         {

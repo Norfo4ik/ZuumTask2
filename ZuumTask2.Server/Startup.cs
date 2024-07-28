@@ -25,32 +25,25 @@ public class Startup
 
         // Register the background service for periodic updates
         services.AddHostedService<WeatherUpdateService>();
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builder => builder.WithOrigins("https://localhost:5173", "https://localhost:5266", "https://localhost:5266/api/weather/history")
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod().
+                                  AllowCredentials());
+
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            app.UseExceptionHandler("/Home/Error");
-            app.UseHsts();
-        }
-
-        app.UseHttpsRedirection();
-        app.UseStaticFiles();
-
+    {        
         app.UseRouting();
-
-        app.UseAuthorization();
-
+        app.UseCors("AllowSpecificOrigin");
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapControllers();
         });
     }
 }

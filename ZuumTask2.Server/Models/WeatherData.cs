@@ -2,9 +2,10 @@
 {
     public class WeatherData
     {
+        public int Id { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public float Temperature { get; set; }
+        public double Temperature { get; set; }
         public DateTime LastUpdated { get; set; }
     }
 }
