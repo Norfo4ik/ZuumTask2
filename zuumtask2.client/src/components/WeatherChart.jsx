@@ -4,7 +4,7 @@ import axios from 'axios';
 import 'chart.js/auto';
 import './WeatherChart.css';
 
-axios.defaults.baseURL = 'https://localhost:5266'; // Ensure this matches your backend URL
+axios.defaults.baseURL = 'https://localhost:5266';
 
 const WeatherChart = () => {
     const [weatherData, setWeatherData] = useState({});
@@ -13,7 +13,6 @@ const WeatherChart = () => {
         axios.get('/api/weather/history')
             .then(response => {
                 if (Array.isArray(response.data)) {
-                    // Group data by city
                     const groupedData = response.data.reduce((acc, item) => {
                         const cityKey = `${item.country}/${item.city}`;
                         if (!acc[cityKey]) {

@@ -18,7 +18,10 @@ builder.Services.AddScoped<IWeatherService, WeatherService>();
 // Register the background service for periodic updates
 builder.Services.AddHostedService<WeatherUpdateService>();
 
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ZuumTask2.Server.Services;
 using ZuumTask2.Server.Data;
+using Microsoft.AspNetCore.Cors;
 
 
 namespace ZuumTask2.Server.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("AllowSpecificOrigin")]
     public class WeatherController : ControllerBase
     {
         private readonly IWeatherService _weatherService;
